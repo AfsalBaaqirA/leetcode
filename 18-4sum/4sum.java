@@ -8,7 +8,6 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         
         if (k == 2) {
-            // Base case: 2-sum problem
             int left = start, right = nums.length - 1;
             while (left < right) {
                 long sum = (long) nums[left] + nums[right];
@@ -28,10 +27,9 @@ class Solution {
             }
         } 
         else {
-            // Recursive case: reduce k-sum to (k-1)-sum
             for (int i = start; i < nums.length - k + 1; i++) {
                 if (i > start && nums[i] == nums[i - 1]) {
-                    continue; // Skip duplicates
+                    continue;
                 }
                 List<List<Integer>> subResults = kSumHelper(nums, target - nums[i], k - 1, i + 1);
                 for (List<Integer> subResult : subResults) {
