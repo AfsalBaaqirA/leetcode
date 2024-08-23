@@ -15,8 +15,12 @@ class Solution {
                     result.add(Arrays.asList(nums[l], nums[r]));
                     l++;
                     r--;
-                    while (l < r && nums[l] == nums[l - 1]) l++;
-                    while (l < r && nums[r] == nums[r + 1]) r--;
+                    while (l < r && nums[l] == nums[l - 1]) {
+                        l++;
+                    }
+                    while (l < r && nums[r] == nums[r + 1]) {
+                        r--;
+                    }
                 } 
                 else if (sum < target) {
                     l++;
