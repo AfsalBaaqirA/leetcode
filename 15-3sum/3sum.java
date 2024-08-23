@@ -6,7 +6,7 @@ class Solution {
         }
         Arrays.sort(nums);
         
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length - 2; i++) {
             if (nums[i] > 0) {
                 break;
             }
@@ -25,8 +25,12 @@ class Solution {
                 else {
                     answer.add(Arrays.asList(nums[i], nums[l], nums[r]));
                     l++;
-                    while (nums[l] == nums[l - 1] && l < r) {
+                    r--;
+                    while (l < r && nums[l] == nums[l - 1]) {
                         l++;
+                    }
+                    while (l < r && nums[r] == nums[r + 1]) {
+                        r--;
                     }
                 }
             }
