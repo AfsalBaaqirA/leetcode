@@ -8,21 +8,21 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         
         if (k == 2) {
-            int left = start, right = nums.length - 1;
-            while (left < right) {
-                long sum = (long) nums[left] + nums[right];
+            int l = start, r = nums.length - 1;
+            while (l < r) {
+                long sum = (long) nums[l] + nums[r];
                 if (sum == target) {
-                    result.add(Arrays.asList(nums[left], nums[right]));
-                    left++;
-                    right--;
-                    while (left < right && nums[left] == nums[left - 1]) left++;
-                    while (left < right && nums[right] == nums[right + 1]) right--;
+                    result.add(Arrays.asList(nums[l], nums[r]));
+                    l++;
+                    r--;
+                    while (l < r && nums[l] == nums[l - 1]) l++;
+                    while (l < r && nums[r] == nums[r + 1]) r--;
                 } 
                 else if (sum < target) {
-                    left++;
+                    l++;
                 } 
                 else {
-                    right--;
+                    r--;
                 }
             }
         } 
@@ -39,7 +39,6 @@ class Solution {
                 }
             }
         }
-        
         return result;
     }
 }
