@@ -2,14 +2,12 @@ public class BSTIterator {
     private Stack<TreeNode> stack = new Stack<>();
 
     public BSTIterator(TreeNode root) {
-        pushLeft(root);
+        push(root);
     }
 
     public int next() {
         TreeNode node = stack.pop();
-        if (node.right != null) {
-            pushLeft(node.right);
-        }
+        push(node.right);
         return node.val;
     }
 
@@ -17,7 +15,7 @@ public class BSTIterator {
         return !stack.isEmpty();
     }
 
-    private void pushLeft(TreeNode node) {
+    private void push(TreeNode node) {
         while (node != null) {
             stack.push(node);
             node = node.left;
