@@ -5,16 +5,14 @@ class Solution {
         }
         Arrays.sort(nums);
 
-        int res = Integer.MIN_VALUE, length = 1;
+        int res = 1, length = 1;
 
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] == nums[i - 1] + 1) {
                 length++;
             }
-            else {
-                if (nums[i] != nums[i - 1]) {
-                    length = 1;
-                }
+            else if (nums[i] != nums[i - 1]) {
+                length = 1;
             }
             res = Math.max(res, length);
         }
