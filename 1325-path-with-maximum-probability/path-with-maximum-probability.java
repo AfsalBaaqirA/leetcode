@@ -2,7 +2,6 @@ class Solution {
     public static double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
         double[] prob = new double[n];
-        Arrays.fill(prob, 0.0);
         prob[start] = 1.0;  
 
         for (int i = 0; i < n - 1; i++) {
@@ -21,9 +20,10 @@ class Solution {
                     updated = true;
                 }
             }
-            if (!updated) break;  
+            if (!updated) {
+                break;
+            }
         }
-
         return prob[end];
     }
 }
