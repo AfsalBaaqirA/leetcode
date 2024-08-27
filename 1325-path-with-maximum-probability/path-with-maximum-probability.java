@@ -1,5 +1,5 @@
 class Solution {
-    public static double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
+    public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
         double[] prob = new double[n];
         prob[start] = 1.0;  
