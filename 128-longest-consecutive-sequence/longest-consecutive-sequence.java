@@ -12,10 +12,11 @@ class Solution {
                 length++;
             }
             else if (nums[i] != nums[i - 1]) {
+                res = Math.max(res, length);
                 length = 1;
             }
-            res = Math.max(res, length);
         }
+        res = Math.max(res, length);
         return res;
     }
 }
