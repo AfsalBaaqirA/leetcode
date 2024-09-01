@@ -1,13 +1,13 @@
 class Solution {
     public int[][] construct2DArray(int[] original, int m, int n) {
-        if (m * n == original.length) {
-            int[][] resultArray = new int[m][n];
-            for (int i = 0; i < original.length; i++) {
-                resultArray[i / n][i % n] = original[i];
-            }
-
-            return resultArray;
+        if(m * n != original.length){
+            return new int[][]{};
         }
-        return new int[][]{};
+        int[][] arr = new int[m][];
+
+        for(int i = 0; i < m; i++){
+           arr[i] = Arrays.copyOfRange(original, i * n, i * n + n);
+        }
+        return arr;
     }
 }
