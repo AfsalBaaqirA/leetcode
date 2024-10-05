@@ -1,31 +1,35 @@
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
-        if (s1.length() > s2.length()) return false;
+        int m = s1.length();
+        int n = s2.length();
 
-        int[] s1Count = new int[26];
-        int[] s2Count = new int[26];
+        if (m > n) return false;  
 
-        for (int i = 0; i < s1.length(); i++) {
-            s1Count[s1.charAt(i) - 'a']++;
-            s2Count[s2.charAt(i) - 'a']++;
+        int[] s1Freq = new int[26];
+        int[] windowFreq = new int[26];
+
+        for (char c : s1.toCharArray()) {
+            s1Freq[c - 'a']++;
         }
 
-        for (int i = 0; i < s2.length() - s1.length(); i++) {
-            if (matches(s1Count, s2Count)) {
+        for (int i = 0; i < m; i++) {
+            windowFreq[s2.charAt(i) - 'a']++;
+        }
+
+        for (int i = 0; i <= n - m; i++) {
+
+            if (Arrays.equals(s1Freq, windowFreq)) {
                 return true;
             }
-            s2Count[s2.charAt(i) - 'a']--;
-            s2Count[s2.charAt(i + s1.length()) - 'a']++;
-        }
-        return matches(s1Count, s2Count);
-    }
 
-    private boolean matches(int[] s1Count, int[] s2Count) {
-        for (int i = 0; i < 26; i++) {
-            if (s1Count[i] != s2Count[i]) {
-                return false;
+            if (i + m < n) {
+
+                windowFreq[s2.charAt(i) - 'a']--;
+
+                windowFreq[s2.charAt(i + m) - 'a']++;
             }
         }
-        return true;
+
+        return Arrays.equals(s1Freq, windowFreq);
     }
 }
